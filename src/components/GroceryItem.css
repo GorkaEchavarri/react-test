@@ -1,0 +1,15 @@
+.grocery-container {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ececec;
+  background-color: #2a2a2a;
+  color: white;
+  border-radius: 12px;
+  justify-content: space-between;
+  width: 650px;
+  margin: 4px;
+}
+
+.grocery-item {
+  flex: 0 0 25%;
+}
