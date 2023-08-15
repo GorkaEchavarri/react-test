@@ -1,20 +1,39 @@
+import React, { useState } from 'react';
 import './NewGrocery.css'
 
-function NewGrocery() {
+function NewGrocery(props) {
 
-  function typeChangeHandler(event) {console.log(event.target.value)}
-  function quantityChangeHandler(event) {console.log(event.target.value)}
-  function ItemChangeHandler(event) {console.log(event.target.value)}
+  const [enteredType, setEnteredType] = useState('');
+  const [enteredQuantity, setEnteredQuantity] = useState('');
+  const [enteredItem, setEnteredItem] = useState('');
+
+  function typeChangeHandler(event) {setEnteredType(event.target.value)};
+  function quantityChangeHandler(event) {setEnteredQuantity(event.target.value)};
+  function itemChangeHandler(event) {setEnteredItem(event.target.value)};
+
+  function submitHandler(event) {
+    event.preventDefault();
+    const groceryData = {
+      type: enteredType,
+      quantity: enteredQuantity,
+      item: enteredItem
+    };
+    // console.log(groceryData);
+    props.onSaveGroceryData(groceryData);
+    setEnteredType('');
+    setEnteredQuantity('');
+    setEnteredItem('');
+  }
 
   return (
     <div>
-      <form className='new-grocery'>
+      <form className='new-grocery' onSubmit={submitHandler}>
         <label>Type:</label>
-        <input type='text' onChange={typeChangeHandler}/>
+        <input type='text' value={enteredType} onChange={typeChangeHandler}/>
         <label> Quantity:</label>
-        <input type='number' onChange={quantityChangeHandler}/>
+        <input type='number' value={enteredQuantity} onChange={quantityChangeHandler}/>
         <label> Item:</label>
-        <input type='text' onChange={ItemChangeHandler}/> <br></br>
+        <input type='text' value={enteredItem} onChange={itemChangeHandler}/> <br></br>
         <button type='submit'>Add Item</button>
       </form>
     </div>

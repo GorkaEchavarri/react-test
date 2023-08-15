@@ -5,11 +5,19 @@ import ListAllGroceries from './components/ListAllGroceries';
 
 
 function App() {
+  function onSaveGroceryDataHandler(enteredGroceryData) {
+    const groceryData = {
+      ...enteredGroceryData,
+      id: Math.random().toString()
+    };
+    console.log(groceryData);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>--My Groceries--</h1>
-        <NewGrocery />
+        <NewGrocery onSaveGroceryData={onSaveGroceryDataHandler} />
         <br />
         <ListAllGroceries />
       </header>
