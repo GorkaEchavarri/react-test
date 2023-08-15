@@ -14,10 +14,10 @@ function ListAllGroceries() {
   return (
     <div>
       <ul>
-      <div class="grocery-container">
-      <div class="grocery-item">Type</div>
-    <div class="grocery-item">Quantity</div>
-      <div class="grocery-item">Item</div>
+      <div className="grocery-container">
+      <div className="grocery-item">Type</div>
+    <div className="grocery-item">Quantity</div>
+      <div className="grocery-item">Item</div>
     </div>
     <br></br>
       <GroceryItem type={groceries[0].type} quantity={groceries[0].quantity} item={groceries[0].item}/>
