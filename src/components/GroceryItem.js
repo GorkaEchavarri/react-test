@@ -2,10 +2,10 @@ import './GroceryItem.css'
 
 function GroceryItem(props) {
   return (
-    <div class="grocery-container">
-      <div class="grocery-item">{props.type}</div>
-      <div class="grocery-item">{props.quantity}</div>
-      <div class="grocery-item">{props.item}</div>
+    <div className="grocery-container">
+      <div className="grocery-item">{props.type}</div>
+      <div className="grocery-item">{props.quantity}</div>
+      <div className="grocery-item">{props.item}</div>
     </div>
   );
 }
