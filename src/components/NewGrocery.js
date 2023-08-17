@@ -13,7 +13,9 @@ function NewGrocery(props) {
 
   function submitHandler(event) {
     event.preventDefault();
+
     const groceryData = {
+      key: Math.random().toString(),
       type: enteredType,
       quantity: enteredQuantity,
       item: enteredItem
@@ -34,7 +36,7 @@ function NewGrocery(props) {
         <input type='number' value={enteredQuantity} onChange={quantityChangeHandler}/>
         <label> Item:</label>
         <input type='text' value={enteredItem} onChange={itemChangeHandler}/> <br></br>
-        <button type='submit'>Add Item</button>
+        <button className="cancel-button">Cancel</button> <button className="submit-button" type='submit'>Add Item</button>
       </form>
     </div>
   );
