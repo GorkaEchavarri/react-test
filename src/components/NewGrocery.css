@@ -12,7 +12,7 @@
 .submit-button {
   font: inherit;
   cursor: pointer;
-  padding: 5px 200px;
+  padding: 5px 110px;
   margin: 15px;
   border: 1px solid #40005d;
   background-color: #40005d;
@@ -65,4 +65,13 @@
 .cancel-button.alternative:hover,
 .cancel-button.alternative:active {
   background-color: #5b2020;
+}
+
+
+.inputs {
+  margin: 10px;
+}
+
+.item-input{
+  width: 400px;
 }
