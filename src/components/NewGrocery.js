@@ -6,6 +6,7 @@ function NewGrocery(props) {
   const [enteredType, setEnteredType] = useState('');
   const [enteredQuantity, setEnteredQuantity] = useState('');
   const [enteredItem, setEnteredItem] = useState('');
+  const [hideForm, setHideForm] = useState(false);
 
   function typeChangeHandler(event) {setEnteredType(event.target.value)};
   function quantityChangeHandler(event) {setEnteredQuantity(event.target.value)};
@@ -13,6 +14,8 @@ function NewGrocery(props) {
 
   function submitHandler(event) {
     event.preventDefault();
+    setHideForm(true);
+
 
     const groceryData = {
       key: Math.random().toString(),
@@ -20,23 +23,33 @@ function NewGrocery(props) {
       quantity: enteredQuantity,
       item: enteredItem
     };
-    // console.log(groceryData);
-    props.onSaveGroceryData(groceryData);
+    enteredItem? props.onSaveGroceryData(groceryData) : console.log("Please enter data")
     setEnteredType('');
     setEnteredQuantity('');
     setEnteredItem('');
   }
 
+  function cancelButtonHandler(event) {
+    event.preventDefault();
+    setHideForm(false);
+
+  }
+
   return (
     <div>
-      <form className='new-grocery' onSubmit={submitHandler}>
-        <label>Type:</label>
+      <form className='new-grocery'>
+        {hideForm? <div className="inputs">
+        <label>Type: </label>
         <input type='text' value={enteredType} onChange={typeChangeHandler}/>
-        <label> Quantity:</label>
+        <label> Quantity: </label>
         <input type='number' value={enteredQuantity} onChange={quantityChangeHandler}/>
-        <label> Item:</label>
-        <input type='text' value={enteredItem} onChange={itemChangeHandler}/> <br></br>
-        <button className="cancel-button">Cancel</button> <button className="submit-button" type='submit'>Add Item</button>
+        <br></br>
+        <label> Item: </label>
+        <input type='text' className="item-input" value={enteredItem} onChange={itemChangeHandler}/>
+        </div> : ""}
+
+        <button className="cancel-button" onClick={cancelButtonHandler}>Cancel</button>
+        <button className="submit-button" type='submit' onClick={submitHandler}>Add Item</button>
       </form>
     </div>
   );
